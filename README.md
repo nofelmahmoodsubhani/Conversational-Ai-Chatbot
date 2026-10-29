@@ -1,119 +1,126 @@
-# Conversational AI Chatbot with LangGraph
+# Conversational AI Chatbot
 
-A conversational AI chatbot built using LangChain, LangGraph, and OpenAI GPT-4o-mini. This project explores how to maintain conversation history, manage context length, generate responses in different languages, and stream AI output.
+A conversational AI project built with Python, LangChain, LangGraph, and OpenAI. This project explores LLM integration, conversation memory, streaming responses, and graph-based workflow orchestration through two Jupyter notebooks.
+
+## Overview
+
+The repository contains two notebooks that demonstrate the progression from a basic LLM application to a more structured conversational chatbot.
 
 ## Features
 
-- **Conversational Memory:** Maintains conversation state across multiple turns using LangGraph's `MemorySaver`.
-- **Session Management:** Uses thread IDs to distinguish conversation sessions.
-- **Multilingual Responses:** Uses a configurable system prompt to generate responses in the requested language.
-- **Context Management:** Trims conversation history to a defined token limit to manage context length.
-- **Streaming Responses:** Displays AI output incrementally rather than waiting for the entire response.
-- **Graph-Based Workflow:** Uses LangGraph's `StateGraph` to organize and execute the chatbot workflow.
+- **LLM Integration:** Uses OpenAI's GPT-4o-mini through LangChain.
+- **Conversation Memory:** Maintains conversational context across multiple turns.
+- **Graph-Based Workflow:** Uses LangGraph to organize chatbot execution.
+- **Streaming Responses:** Streams model output as it is generated.
+- **Conversation History Management:** Trims message history to help manage token limits.
+- **Configurable System Prompt:** Supports customization of the chatbot's instructions, including language preferences.
+- **Session Management:** Uses thread-based identifiers to maintain separate conversation states.
 
-## Tech Stack
+## Technologies Used
 
-- Python
-- LangChain
-- LangGraph
-- OpenAI GPT-4o-mini
-- Jupyter Notebook
-
-## How It Works
-
-1. The user submits a message along with the preferred response language.
-2. LangGraph receives the input and passes the conversation state to the model node.
-3. The conversation history is trimmed according to the configured token limit.
-4. LangChain formats the system prompt and conversation messages.
-5. OpenAI GPT-4o-mini generates a response in the requested language.
-6. LangGraph maintains conversation state through `MemorySaver` and supports streamed output.
-
-## Concepts Demonstrated
-
-This project demonstrates practical implementations of:
-
-- Stateful conversational AI
-- Message persistence and session tracking
-- Custom graph state schemas
-- Prompt templates and message placeholders
-- Conversation-history trimming
-- Streaming model responses
-- LangGraph workflow construction
+| Technology | Purpose |
+|---|---|
+| Python | Core programming language |
+| LangChain | LLM integration and message handling |
+| LangGraph | Workflow orchestration and state management |
+| OpenAI GPT-4o-mini | Language model |
+| MemorySaver | Conversation state persistence |
+| Jupyter Notebook | Development and experimentation |
 
 ## Project Structure
 
 ```text
-.
-└── chatbot.ipynb
+Conversational-Ai-Chatbot/
+│
+├── conversational_ai_chatbot.ipynb
+├── simple_llm_application.ipynb
+└── README.md
 ```
 
-## Project Scope
+### Notebooks
 
-This repository contains a Jupyter notebook demonstrating conversational AI concepts and their implementation. It is an experimental learning project rather than a standalone, production-ready chatbot application.
+**1. `conversational_ai_chatbot.ipynb`**
+
+The main project notebook, demonstrating a conversational chatbot with LangGraph orchestration, conversation memory, streaming output, configurable prompts, and message-history management.
+
+**2. `simple_llm_application.ipynb`**
+
+A foundational notebook demonstrating basic LLM setup and integration with LangChain. It provides background for understanding the model initialization used in the main chatbot project.
+
+## How It Works
+
+1. The user submits a message.
+2. The chatbot processes the conversation through its LangGraph workflow.
+3. The model generates a response using the available conversation context.
+4. Conversation state is maintained using thread-based sessions and `MemorySaver`.
+5. The response is streamed to the user.
+6. Message history is managed to help keep the conversation within token limits.
+
+## Key Concepts Demonstrated
+
+- Large Language Models (LLMs)
+- LangChain model integration
+- LangGraph workflows
+- Stateful conversational applications
+- Conversation memory and session management
+- Streaming LLM responses
+- Message-history management
+- Prompt configuration
+- API key management
 
 ## Future Improvements
 
-- Build an interactive chat interface.
-- Add persistent storage beyond in-memory conversation checkpoints.
-- Improve context management and conversation summarization.
-- Add error handling and configuration management.
-- Introduce automated tests for conversation memory and response behavior.
+- Add automated evaluation of response quality.
+- Implement more robust error handling and retry logic.
+- Add a user interface beyond Jupyter Notebook.
+- Introduce conversation logging and observability.
+- Explore additional models and workflow capabilities.
 
 ## Installation and Setup
+
+### Prerequisites
+
+- Python 3.10 or later
+- Jupyter Notebook
+- An OpenAI API key
 
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-repository-url>
-cd <your-repository-folder>
+git clone https://github.com/nofelmahmoodsubhani/Conversational-Ai-Chatbot.git
+cd Conversational-Ai-Chatbot
 ```
 
-### 2. Create a Virtual Environment
-
-```bash
-python -m venv .venv
-```
-
-Activate it:
-
-**Windows**
-```bash
-.venv\Scripts\activate
-```
-
-**macOS/Linux**
-```bash
-source .venv/bin/activate
-```
-
-### 3. Install Dependencies
+### 2. Install Dependencies
 
 ```bash
 pip install langchain langchain-openai langgraph jupyter typing_extensions
 ```
 
-### 4. Configure the OpenAI API Key
+### 3. Configure Your API Key
 
-The notebook prompts for your API key if `OPENAI_API_KEY` is not already set.
+Set your OpenAI API key as an environment variable.
 
-Alternatively, set the environment variable before launching Jupyter.
+**Windows PowerShell:**
 
-**Windows PowerShell**
 ```powershell
-$env:OPENAI_API_KEY="your-api-key"
+$env:OPENAI_API_KEY="your_api_key_here"
 ```
 
-**macOS/Linux**
+**macOS/Linux:**
+
 ```bash
-export OPENAI_API_KEY="your-api-key"
+export OPENAI_API_KEY="your_api_key_here"
 ```
 
-### 5. Run the Notebook
+Replace `your_api_key_here` with your actual API key. Never commit API keys or other secrets to GitHub.
 
-Launch Jupyter:
+### 4. Launch Jupyter Notebook
 
 ```bash
 jupyter notebook
 ```
 
-Open `chatbot.ipynb` and execute the cells in order.
+Open `conversational_ai_chatbot.ipynb` to explore and run the main chatbot notebook.
+
+**Note:** These notebooks are intended for learning and experimentation. Run the cells in order and ensure your API key and required dependencies are configured before execution.
